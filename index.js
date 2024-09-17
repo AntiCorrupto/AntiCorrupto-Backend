@@ -12,6 +12,10 @@ const transferlandRouter = require('./routers/land/transferlandRouter');
 const landcase = require('./routers/land/landcaseRouter');
 const cors = require('cors');
 const dotenv = require('dotenv');
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger-output.json');
+
 const app = express();
 
 app.use(bodyParser.json());
