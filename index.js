@@ -18,7 +18,8 @@ app.use(bodyParser.json());
 dotenv.config();
 
 const corsOptions ={
-  origin:['http://localhost:5173'], 
+  origin:['https://anticorrupto-frontend-c3ys1cd83-anticorruptos-projects.vercel.app'], 
+  // origin:['http://localhost:5173'], 
   credentials:true,         
   optionSuccessStatus:200
 }
@@ -28,6 +29,8 @@ app.use(cors(corsOptions));
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use('/auth', authRouter);
 app.use('/vehicle', vehicleRouter);
