@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 dotenv.config();
 
 const corsOptions = {
-  origin: 'https://anticorrupto-frontend-c3ys1cd83-anticorruptos-projects.vercel.app',
+  origin: 'https://anticorrupto-frontend.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
