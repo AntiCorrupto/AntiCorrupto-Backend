@@ -17,14 +17,17 @@ const app = express();
 app.use(bodyParser.json());
 dotenv.config();
 
-const corsOptions ={
-  origin:['https://anticorrupto-frontend-c3ys1cd83-anticorruptos-projects.vercel.app'], 
-  // origin:['http://localhost:5173'], 
-  credentials:true,         
-  optionSuccessStatus:200
-}
+const corsOptions = {
+  origin: 'https://anticorrupto-frontend-c3ys1cd83-anticorruptos-projects.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  optionSuccessStatus: 200
+};
 
 app.use(cors(corsOptions));
+
+app.options('*', cors(corsOptions));
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
