@@ -40,7 +40,7 @@ const getAllVehicles = async (req, res) => {
 
 const getVehicleById = async (req, res) => {
   const id = req.params.id;
- try{
+  if(true) {
     const vehicle = await prisma.vehicle.findMany({
       where: { ownerId:id }
     });
@@ -50,9 +50,9 @@ const getVehicleById = async (req, res) => {
       res.status(200).json(vehicle);
     }
   } 
-  catch (error) {
-    res.status(500).json({ error: 'Error fetching vehicle', details: error.message });
-  }
+  // catch (error) {
+  //   res.status(500).json({ error: 'Error fetching vehicle', details: error.message });
+  // }
 };
 const getVehicleByUserId = async (req, res) => {
   const id = req.params.id;
