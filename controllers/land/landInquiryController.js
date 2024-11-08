@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 exports.createInquiry = async (req, res) => {
   const { clientId, landId } = req.body;
 
-  if (true) {
+  try {
     // Check if an inquiry already exists for this client and land
 
     const existingInquiry = await prisma.landInquiry.findFirst({
@@ -31,9 +31,9 @@ exports.createInquiry = async (req, res) => {
 
     res.status(201).json(newInquiry);
   }
-  // catch (error) {
-  //   res.status(400).json({ error: error.message });
-  // }
+  catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 // Get All Inquiries
