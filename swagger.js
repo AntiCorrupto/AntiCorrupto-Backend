@@ -5,8 +5,8 @@ const doc = {
     title: 'My API',
     description: 'API Documentation',
   },
-  host: 'anticorrupto-backend.onrender.com',  // Adjust to your app's host
-  schemes: ['https'],
+  host: 'localhost:3000',  // Adjust to your app's host
+  schemes: ['http','https'],
 };
 
 const outputFile = './swagger-output.json';  // This is the generated file

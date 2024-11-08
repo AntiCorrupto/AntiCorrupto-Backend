@@ -3,15 +3,14 @@ const prisma = new PrismaClient();
 
 const createVehicle = async (req, res) => {
   try{
-    console.log("hi1");
-    console.log(req.body);
+
     const { plateNumber, make, model, year, color, ownerId } = req.body;
     if (!plateNumber || !make || !model || !year || !color || !ownerId) {
       return res.status(203).json({ error: 'Please provide all required fields' });
     }
-    console.log("hi2");
+     2
     const yearInInt=parseInt(year);
-    console.log("hi3");
+     3;
     const vehicle = await prisma.vehicle.create({
       data: {
         plateNumber,
@@ -41,7 +40,7 @@ const getAllVehicles = async (req, res) => {
 
 const getVehicleById = async (req, res) => {
   const id = req.params.id;
-  if(true) {
+ try{
     const vehicle = await prisma.vehicle.findMany({
       where: { ownerId:id }
     });
@@ -51,9 +50,9 @@ const getVehicleById = async (req, res) => {
       res.status(200).json(vehicle);
     }
   } 
-  // catch (error) {
-  //   res.status(500).json({ error: 'Error fetching vehicle', details: error.message });
-  // }
+  catch (error) {
+    res.status(500).json({ error: 'Error fetching vehicle', details: error.message });
+  }
 };
 const getVehicleByUserId = async (req, res) => {
   const id = req.params.id;

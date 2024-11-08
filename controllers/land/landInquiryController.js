@@ -7,20 +7,20 @@ exports.createInquiry = async (req, res) => {
 
   if (true) {
     // Check if an inquiry already exists for this client and land
-    console.log(clientId, landId);
+
     const existingInquiry = await prisma.landInquiry.findFirst({
       where: {
         clientId,
         landId,
       },
     });
-    console.log(existingInquiry);
+
     if (existingInquiry != null) {
       return res.status(400).json({
         error: "An inquiry for this land by the same client already exists.",
       });
     }
-    console.log("hi");
+     
     // If no inquiry exists, create a new one
     const newInquiry = await prisma.landInquiry.create({
       data: {
@@ -73,7 +73,8 @@ exports.getInquiryById = async (req, res) => {
 };
 
 exports.getInquiryBylandId = async (req, res) => {
-  const { landId } = req.params;
+  const { id } = req.params;
+  const landId = id;
 
   try {
     const lands = await prisma.landInquiry.findMany({
@@ -97,7 +98,7 @@ exports.getInquiryBylandId = async (req, res) => {
 exports.updateInquiry = async (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
-  console.log(id, status);
+
   try {
     const updatedInquiry = await prisma.landInquiry.update({
       where: { id },
